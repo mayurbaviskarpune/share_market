@@ -1,0 +1,107 @@
+/* General styles */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f0f4ff, #e6eeff);
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px 35px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    color: #2d3e50;
+    margin-bottom: 25px;
+}
+
+/* Form */
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #2d3e50;
+}
+
+select, input[type="date"], button {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d9e6;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Inputs */
+select:focus, input[type="date"]:focus {
+    border-color: #4f8ef7;
+    outline: none;
+    box-shadow: 0 0 5px rgba(79, 142, 247, 0.4);
+}
+
+/* Button */
+button {
+    background: #4f8ef7;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+button:hover {
+    background: #3a73d9;
+}
+
+/* Flash messages */
+.messages {
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.alert.success {
+    background: #e6f9ee;
+    color: #1e7d3c;
+    border: 1px solid #a6e2b3;
+}
+
+.alert.error {
+    background: #fdeaea;
+    color: #b13c3c;
+    border: 1px solid #f5b5b5;
+}
+
+.alert.warning {
+    background: #fff7e6;
+    color: #946200;
+    border: 1px solid #ffd27f;
+}
+
+/* Result card */
+.result-card {
+    margin-top: 25px;
+    padding: 20px;
+    background: #f9fbff;
+    border-radius: 12px;
+    border: 1px solid #dce6f7;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+
+
