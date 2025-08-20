@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ stock }} Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 {{ stock }} Dashboard</h1>
+
+        <!-- Latest Summary -->
+        <div class="card">
+            <h2>Latest Month Summary</h2>
+            <ul>
+                <li><b>Month:</b> {{ latest["YearMonth"] }}</li>
+                <li><b>Open:</b> {{ latest["Open"] }}</li>
+                <li><b>Close:</b> {{ latest["Close"] }}</li>
+                <li><b>High:</b> {{ latest["High"] }}</li>
+                <li><b>Low:</b> {{ latest["Low"] }}</li>
+                <li><b>Performance %:</b> {{ latest["Performance_%"] }}</li>
+            </ul>
+        </div>
+
+        <!-- Table -->
+        <div class="table-card">
+            <h2>📅 Monthly Data</h2>
+            {{ table|safe }}
+        </div>
+
+        <!-- Charts -->
+        <div class="charts">
+            <div class="chart-box">
+                <h2>📈 Close Price Trend</h2>
+                <canvas id="closeChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <h2>📊 Monthly Performance %</h2>
+                <canvas id="perfChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chartData = {{ chart|tojson }};
+
+        // Close Price Chart
+        new Chart(document.getElementById("closeChart"), {
+            type: "line",
+            data: {
+                labels: chartData.labels,
+                datasets: [{
+                    label: "Close Price",
+                    data: chartData.close,
+                    borderColor: "#4f8ef7",
+                    fill: false,
+                    tension: 0.2
+                }]
+            }
+        });
+
+        // Performance Chart
+        new Chart(document.getElementById("perfChart"), {
+            type: "bar",
+            data: {
+                labels: chartData.labels,
+                datasets: [{
+                    label: "Performance %",
+                    data: chartData.performance,
+                    backgroundColor: chartData.performance.map(v => v >= 0 ? "#4caf50" : "#f44336")
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
 
